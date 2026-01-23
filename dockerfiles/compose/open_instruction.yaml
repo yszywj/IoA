@@ -30,7 +30,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./volumes/autogpt/log:/app/tool_agent_log
-      - ./volumes/openai_response_log:${OPENAI_RESPONSE_LOG_PATH}
+      - ./volumes/openai_response_log:/app/volumes/openai_response_log
+      # - ./volumes/openai_response_log:${OPENAI_RESPONSE_LOG_PATH}
       - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/sqlite:/app/database
       - ../../configs/client_configs:/app/configs
     env_file:
@@ -59,8 +60,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./volumes/openInterpreter/log:/app/tool_agent_log
+      - ./volumes/openai_response_log:/app/volumes/openai_response_log
       - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/sqlite:/app/database
-      - ./volumes/openai_response_log:${OPENAI_RESPONSE_LOG_PATH}
+      # - ./volumes/openai_response_log:${OPENAI_RESPONSE_LOG_PATH}
       - ../../configs/client_configs:/app/configs
     env_file:
       - .env

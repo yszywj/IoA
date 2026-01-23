@@ -8,6 +8,7 @@ class AgentInfo(BaseModel):
     # id: str
     name: str
     type: Literal["Human Assistant", "Thing Assistant"]
+    # type只能是"Human Assistant"或"Thing Assistant"
     desc: str
 
 
